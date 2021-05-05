@@ -1,24 +1,36 @@
+body{
+  background: grey;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  */
+}
 #quote-box{
-  margin: 0 auto;
-  max-width: 640px;
+  margin: 0 auto; /*or flex for body with vertical centred, but it no need.*/
+  width: 640px;
   background: lightgreen;
   padding: 16px;
   border-radius: 4px;
   color: grey;
 }
+#text{font-size: 1.25em;}
 #author{text-align: right;}
-.usableItems{display: flex; justify-content: space-between;}
-#new-quote{
-  border: 0; border-radius: 4px; padding: 4px;
+.usableItems{display: flex; justify-content: space-between; padding-bottom: 16px;}
+#new-quote, #tweet-quote{
+  border: 0; border-radius: 4px;
   background: grey;
-  color: azure;
+  color: lightgreen;
 }
+#new-quote{padding: 8px 16px;}
 #tweet-quote{
   text-decoration: none;
-  color: azure;
-  background: grey;
-  border: 0; border-radius: 4px; padding: 4px;
+  padding: 8px 10px;
 }
+#tweet-quote .fa-twitter{color: lightblue;}
 #new-quote:hover, #tweet-quote:hover{
   box-shadow: 0 5px 7px rgba(0,0,0,0.25), 0 4px 4px rgba(0,0,0,0.22);
+}
+#new-quote:active, #new-quote:focus{
+  outline: none !important;
 }
