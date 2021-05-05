@@ -1,48 +1,54 @@
 import * as React from "react";
-import { animated } from "react-spring";
-import { useWiggle } from "../hooks/wiggle";
+import { quotes } from "../data.json";
 
-// Our language strings
-const strings = [
-  "Hello React",
-  "Salut React",
-  "Hola React",
-  "안녕 React",
-  "Hej React"
-];
-
-// Utility function to choose a random value from the language array
-function randomLanguage() {
-  return strings[Math.floor(Math.random() * strings.length)];
+// Utility function to choose a random object from the quotes array
+const rndQA = (arrQ) => {
+  let numberOfQuote = arrQ.length;
+  let ind = Math.floor(Math.random() * numberOfQuote);
+  return quotes[ind];
 }
+//let result = rndQA(quotes);
+//console.log(result);
+// console.log(quotes[ind].quote);
+// console.log(quotes[ind].author);
+// const randomArrayQuoteAuthor = [quotes[ind].quote, quotes[ind].author];
+// console.log(randomArrayQuoteAuthor);
+
+//destructuring-assignment
+//let {quote, author} = rndQA(quotes);
+//console.log(quote + ', ' + author);
 
 export default function Home() {
-  const [hello, setHello] = React.useState(strings[0]);
-  const [style, trigger] = useWiggle({ x: 5, y: 5, scale: 1 });
+  let {quote, author} = rndQA(quotes);
+  const [hello, setQuote] = React.useState('');
 
-  const handleChangeHello = () => {
+  const handleChangeQuote = () => {
     // Choose a new Hello from our languages
-    const newHello = randomLanguage();
+    const newQuote = rndQA(quotes);
     // And set it in our components state
-    setHello(newHello);
+    setQuote(newQuote.quote + ', ' + newQuote.author);
+    //return newQuote;
   };
   return (
     <>
-      <h1 className="title">{hello}!</h1>
-      <animated.div onMouseEnter={trigger} style={style}>
-        <img
-          src="https://cdn.glitch.com/2f80c958-3bc4-4f47-8e97-6a5c8684ac2c%2Fillustration.svg?v=1618196579405"
-          className="illustration"
-          onClick={handleChangeHello}
-          alt="Illustration click to change language"
-        />
-      </animated.div>
-      <div className="navigation">
-        <animated.div onMouseEnter={trigger}>
-          <a className="btn--click-me" onClick={handleChangeHello}>
-            Psst, click me
+
+      <div id="quote-box">
+      <i className="fa fa-quote-left"></i>
+        <p id="text">
+          &nbsp;
+          {quote}
+        </p>
+        <p id="author">
+          {author}
+        </p>
+        <div className="usableItems">
+          <button id="new-quote"  onClick={handleChangeQuote} href="#">New quote</button>
+          <a id="tweet-quote" href="twitter.com/intent/tweet/#" target="_ blank">
+            <i className="fa fa-twitter"></i>
+            &nbsp;
+            Tweet quote
           </a>
-        </animated.div>
+        </div>
       </div>
     </>
   );

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Quote Machine</title>
+  <script type="text/javascript" src=".\data.json"></script>
+  <link 
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+  />
+  <style>
+    #quote-box{
+      margin: 0 auto;
+    }
+    /*
+    #text
+    #author
+    #new-quote
+    #tweet-quote
+    */
+  </style>
+</head>
+<body>
+  <div id="quote-box">
+    <i class="fa fa-quote-left"> </i>
+    <p id="text">
+      При первой загрузке мой котировальный автомат отображает случайную цитату в элементе с id = "text".
+    </p>
+    <span id="author">
+      При первой загрузке моя машина цитат отображает автора случайной цитаты в элементе с id = "author".
+    </span>
+    <button id="new-quote" href="#">Pickup New Цитату и ее автора</button>
+    <a id="tweet-quote" href="twitter.com/intent/tweet/#" target="_ blank">
+      <i class="fa fa-twitter"></i>
+      Tweet quote
+    </a>
+  </div>
+  <script>
+    var mydata = JSON.parse(data);
+    //var mydata = JSON.stringify(data);
+    console.log(mydata.quotes);
+  </script>
+</body>
+</html>
